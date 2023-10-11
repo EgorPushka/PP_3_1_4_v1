@@ -1,13 +1,13 @@
-package ru.kata.spring.boot_security.demo.init;
+package ru.kata.spring.bootstrap.demo.init;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import ru.kata.spring.boot_security.demo.models.Role;
-import ru.kata.spring.boot_security.demo.models.User;
-import ru.kata.spring.boot_security.demo.services.RoleService;
-import ru.kata.spring.boot_security.demo.services.UserService;
+import ru.kata.spring.bootstrap.demo.models.Role;
+import ru.kata.spring.bootstrap.demo.models.User;
+import ru.kata.spring.bootstrap.demo.services.RoleService;
+import ru.kata.spring.bootstrap.demo.services.UserService;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
