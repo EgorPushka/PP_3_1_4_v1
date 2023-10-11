@@ -13,6 +13,7 @@ import ru.kata.spring.boot_security.demo.repositories.RoleRepo;
 import ru.kata.spring.boot_security.demo.services.UserService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -30,10 +31,23 @@ public class AdminController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping(value = "/admin")
-    public String getSecret(ModelMap modelMap) {
-        modelMap.addAttribute("users", userService.indexUsers());
-        return "/users";
+//    @GetMapping(value = "/admin")
+//    public String getSecret(ModelMap modelMap) {
+//        modelMap.addAttribute("users", userService.indexUsers());
+//        return "/admin";
+//    }
+
+    @GetMapping("/admin")
+    public String showAllUsers(Model model, Principal principal) {
+        List<User> allUsers = userService.indexUsers();
+        User user = new User();
+        User user1 = userService.findByUsername(principal.getName());
+        model.addAttribute("newUser",user); //новый юзер для формы
+        model.addAttribute("userPrincipal",user1); //авторизованный юзер
+        model.addAttribute("allUsers", allUsers); //список всех юзеров
+        model.addAttribute("allRoles", user1.getRoles()); //список всех ролей авторизованного юзера
+        model.addAttribute("AllRolesBD", roleRepo.findAll()); //список всех ролей в БД
+        return "/admin2";
     }
 
     @GetMapping("/users/{id}")

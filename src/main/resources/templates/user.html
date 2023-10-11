@@ -63,8 +63,14 @@
     <h2 style="text-align: center"><a href="/admin">Back to Users list</a></h2>
 </div>
 
-<div class="add-user-link">
-    <h2 style="text-align: center"><a href="/logout">Logout</a></h2>
+<!--<div class="add-user-link">-->
+<!--    <h2 style="text-align: center"><a href="/logout">Logout</a></h2>-->
+<!--</div>-->
+
+<div class="col-lg-1 ms-auto">
+    <form th:action="@{/logout}" th:method="POST">
+        <button type="submit" class="btn btn-outline-success bg-dark text-white">Logout</button>
+    </form>
 </div>
 
 </body>
